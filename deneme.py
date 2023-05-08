@@ -14,6 +14,7 @@ class UI(QMainWindow):
 
         #Widgetlerı tanımla
         self.pushButton=self.findChild(QPushButton,"pushButton")
+        self.pushButton_2=self.findChild(QPushButton,"pushButton_2")
         self.label=self.findChild(QLabel,"label")
 
         #Dropdown Boxa tıkla
@@ -32,35 +33,28 @@ class UI(QMainWindow):
         if fname:
             self.label.setText(fname[0])
     def create_text_graph(self):
-        file_path="C:\\Users\\USER\\Desktop\\yazlab2\\yeni.txt"
+        file_path = "C:\\Users\\USER\\Desktop\\yazlab2\\yeni.txt"
         G = nx.Graph()
 
-            # Metin dosyasını oku ve kelimeleri düğümlere ekle
+        # Metin dosyasını oku ve cümleleri düğümlere ekle
         with open(file_path, 'r') as file:
-                text = file.read()
-                words = text.split()
-                for word in words:
-                    G.add_node(word)
+            text = file.read()
+            sentences = text.split('. ')  # Cümleleri ayır, eğer başka bir cümle ayracı kullanıyorsanız ona göre güncelleyin
+            for sentence in sentences:
+                G.add_node(sentence)
 
-            # Kelimeler arasındaki ilişkileri kenarlara ekle
-        for i in range(len(words) - 1):
-                current_word = words[i]
-                next_word = words[i + 1]
-        G.add_edge(current_word, next_word)
-
-        return G
-
-        # Metin dosyasının yolunu belirtin
-    file_path="C:\\Users\\USER\\Desktop\\yazlab2\\yeni.txt"
-
-        # Metin dosyasını graf olarak oluştur
-    text_graph = create_text_graph(file_path)
+        # Cümleler arasındaki ilişkileri kenarlara ekle
+        for i in range(len(sentences) - 1):
+            current_sentence = sentences[i]
+            next_sentence = sentences[i + 1]
+            G.add_edge(current_sentence, next_sentence)
 
         # Grafik çizdirme
-    pos = nx.spring_layout(text_graph)  # Düğümlerin konumunu belirleme
-    nx.draw(text_graph, pos, with_labels=True, node_color='skyblue', node_size=1500, edge_color='gray')  # Grafiği çizdirme
-    plt.title('Metin Dosyası Grafiği')
-    plt.show()
+        pos = nx.spring_layout(G)  # Düğümlerin konumunu belirleme
+        nx.draw(G, pos, with_labels=True, node_color='skyblue', node_size=1500, edge_color='gray')  # Grafiği çizdirme
+        plt.title('Metin Dosyası Grafiği')
+        plt.show()
+
 
 #Appi tanımla
 app=QApplication(sys.argv)
