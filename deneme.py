@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow,QApplication,QPushButton,QLabel,QFileDialog
+from PyQt5.QtWidgets import QMainWindow,QApplication,QPushButton,QLabel,QFileDialog,QTextEdit,QComboBox
 from PyQt5 import uic
 import sys
 import networkx as nx
@@ -16,10 +16,21 @@ class UI(QMainWindow):
         self.pushButton=self.findChild(QPushButton,"pushButton")
         self.pushButton_2=self.findChild(QPushButton,"pushButton_2")
         self.label=self.findChild(QLabel,"label")
+        self.label_2=self.findChild(QLabel,"label_2")
+        self.textedit=self.findChild(QTextEdit,"textEdit")
+        self.pushButton_3=self.findChild(QPushButton,"pushButton_3")
+        self.label_3=self.findChild(QLabel,"label_3")
+        self.combobox=self.findChild(QComboBox,"comboBox")
+        self.label_4=self.findChild(QLabel,"label_4")
+        self.textedit_2=self.findChild(QTextEdit,"textEdit_2")
+        self.pushButton_4=self.findChild(QPushButton,"pushButton_4")
+
 
         #Dropdown Boxa tıkla
         self.pushButton.clicked.connect(self.clicker)
         self.pushButton_2.clicked.connect(self.create_text_graph)
+        self.pushButton_3.clicked.connect(self.buttonClicked)
+        self.pushButton_4.clicked.connect(self.buttonClicked2)
         #Appi göster
         self.show()
 
@@ -32,6 +43,15 @@ class UI(QMainWindow):
         os.rename(fname[0], new_file_path)
         if fname:
             self.label.setText(fname[0])
+
+    def buttonClicked(self):
+        text = self.textedit.toPlainText()
+        return text
+    
+    def buttonClicked2(self):
+        text2 = self.textedit_2.toPlainText()
+        return text2
+
     def create_text_graph(self):
         file_path = "C:\\Users\\USER\\Desktop\\yazlab2\\yeni.txt"
         G = nx.Graph()
