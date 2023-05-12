@@ -4,6 +4,7 @@ import sys
 import networkx as nx
 import os
 import matplotlib.pyplot as plt
+import cumle_skoru_algoritmasi
 
 class UI(QMainWindow):
     def __init__(self):
@@ -46,6 +47,7 @@ class UI(QMainWindow):
 
     def buttonClicked(self):
         text = self.textedit.toPlainText()
+        cumle_skoru_algoritmasi.threshold(text)
         return text
     
     def buttonClicked2(self):
