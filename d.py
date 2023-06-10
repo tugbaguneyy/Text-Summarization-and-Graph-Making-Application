@@ -1,1 +1,0 @@
-#kod denemek için oluşturdum.
