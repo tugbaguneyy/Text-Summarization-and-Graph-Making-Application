@@ -2,6 +2,10 @@
 
 This program allows you to select a text document, summarize its content, and visualize the summary in the form of a graph.
 
+## Screenshots
+![Screenshot1](https://github.com/tugbaguneyy/Text-Summarization-and-Graph-Making-Application/blob/master/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20%201.png)
+![Screenshot2](https://github.com/tugbaguneyy/Text-Summarization-and-Graph-Making-Application/blob/master/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20%202.png)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
